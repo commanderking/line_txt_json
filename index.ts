@@ -12,7 +12,6 @@ const getStartEndIndexesForDates = (stringedTextFile: string) => {
   const maxIndex = stringedTextFile.length;
 
   const stringIndexes = dates.map((date) => date.index);
-  console.log({ stringIndexes });
 
   const substringStartEndIndexes = stringIndexes.map(
     (stringIndex, index, indexes) => {
@@ -32,7 +31,6 @@ const dailyChats = startEndIndexes.map((startEndIndex) => {
 });
 
 const formatDailyChat = (dailyChat: string) => {
-  console.log(dailyChat);
   const dailyChatByLine = dailyChat
     .split("\r\n")
     // LINE adds blank lines to the end of each day. Filter these out
@@ -72,5 +70,3 @@ const formattedDailyChats = dailyChats.map(formatDailyChat);
 
 let data = JSON.stringify(formattedDailyChats);
 fs.writeFileSync("dailyChats.json", data);
-
-console.log(formatDailyChat(dailyChats[1]));
